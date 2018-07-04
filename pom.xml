@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>  
+	<groupId>data</groupId>
+	<artifactId>artifacts</artifactId>
+	<version>1.2</version>
+
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-distribution</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+			<skipTests>true</skipTests>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>node02.local.com-releases</name>
+			<url>http://127.0.0.1:8002/artifactory/database</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>node02.local.com-snapshots</name>
+			<url>http://127.0.0.1:8002/artifactory/database</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
